@@ -10,8 +10,8 @@ using namespace std;
 
 int main (){
 	int x, y, total;
-	x = 100;
-	y = 15543;
+	x = 1005435435;
+	y = 15545343;
 	total = x + y ;
 
 	cout << "The sum of is:" << total;
