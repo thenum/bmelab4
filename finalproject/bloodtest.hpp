@@ -13,8 +13,10 @@ using namespace std;
 
 class bloodtest {
 	protected:
-		string name;
-		string doctor;
+		string firstname;
+		string lastname;
+		string gender;
+		string occupation;
 		string bloodtype;
 	public:
 	bloodtest();
@@ -37,7 +39,7 @@ public:
 class bloodglucose : public bloodtest
 {
 private:
-	float plasmaglucose;
+	float plasmagl;
 public:
 	void plasmaglucose();
 };
@@ -45,9 +47,9 @@ public:
 class lipoprotein : public bloodtest
 {
 private:
-	float totalcholesterol;
-	float LDLcholesterol;
-	float HDLcholesterol;
+	float totalchol;
+	float LDLchol;
+	float HDLchol;
 public:
 	void totalcholesterol();
 	void LDLcholesterol();
