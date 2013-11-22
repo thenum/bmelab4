@@ -14,13 +14,9 @@ using namespace std;
 
 class imaging{
 	protected:
-	string firstname;
-	string lastname;
-	string gender;
-	int age;
-	string occupation;
-	int bitsalloc;
-	string comment[];
+		//imaging *comment;
+		string firstname, lastname, gender, occupation;
+		int age, bitsalloc; //i;
 
 	public:
 		imaging();
@@ -31,7 +27,6 @@ class imaging{
 
 class MRI : public imaging {
 	protected:
-		int x,y,z;
 		string scanseq;
 		string seqvar;
 		string scanopt;
@@ -46,18 +41,26 @@ class CT: public imaging {
 	protected:
 		int DSP;
 		int DSD;
+		int bitsto;
+		int hibit;
 
 	public:
+		void bitsstored();
+		void highbit();
 		void DistanceSourcePatient();
 		void DistanceSourceDetector();
 };
 
-class PET : public imaging {
+class US : public imaging {
 	protected:
-		string LIC;
-		string UCDP;
+		int LIC;
+		int UCDP;
+		int bitsto;
+		int hibit;
 
 	public:
+		void bitsstored();
+		void highbit();
 		void LossyImageCompression();
 		void UltrasoundColorDataPresent ();
 };
