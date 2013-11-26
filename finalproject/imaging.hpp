@@ -15,8 +15,7 @@ using namespace std;
 class imaging{
 	protected:
 		//imaging *comment;
-		string firstname, lastname, gender, occupation;
-		int age, bitsalloc; //i;
+		int bitsalloc; //i;
 
 	public:
 		imaging();
@@ -45,6 +44,7 @@ class CT: public imaging {
 		int hibit;
 
 	public:
+		CT ();
 		void bitsstored();
 		void highbit();
 		void DistanceSourcePatient();
@@ -59,6 +59,7 @@ class US : public imaging {
 		int hibit;
 
 	public:
+		US();
 		void bitsstored();
 		void highbit();
 		void LossyImageCompression();

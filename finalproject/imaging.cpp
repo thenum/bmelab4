@@ -13,25 +13,11 @@ using namespace std;
 
 /***********************BASE CLASS*************************/
 imaging :: imaging (){
-	age = 0;
 	bitsalloc = 0;
 	//i = 0;
 	//int max = 1000;
 
 	//comment = new(nothrow) imaging[max];
-
-	cout << "Please enter the first name of the patient:" << endl;
-	cin >> firstname;
-	cout << "Please enter the last name of the patient:" << endl;
-	cin >> lastname;
-	cout << "Please enter (F) if the patient is female and (M) if the patient is male:" << endl;
-	cin >> gender;
-		/*while (!(gender == "F"  )|!(gender == "M")){
-			cout << "Sorry your input is not correct. If the patient is female enter (F) or if male enter (M):" << endl;
-			cin >> gender;
-		}*/
-	cout << "What is the patients age:"<< endl;
-	cin >> age;
 
 }
 
@@ -40,7 +26,7 @@ void imaging :: display() {
 }
 
 void imaging :: annotation() {
-	string dname, nname, sname, l;
+	string dname, nname, sname, l, occupation;
 	cout << "****MENU: ANNOTATIONS****" << endl;
 	cout << "Occupation\t\tInput" << endl;
 	cout << "------------------------------"<< endl;
@@ -50,10 +36,10 @@ void imaging :: annotation() {
 	cout << "------------------------------"<< endl;
 	cout << "According to the above chart, please specify which is applicable to you:" << endl;
 	cin >> l;
-		while (!(l == "D"  )|(l == "N")|(l == "S")){
+		/*if ((l != "D"  )||(l != "N")||(l != "S")){
 			cout << "Sorry your input is not correct. Please specify according to the chart which is applicable to you:" << endl;
 			cin >> l;
-		}
+		}*/
 
 			if (l == "D"){
 				occupation = "Doctor";
@@ -85,11 +71,12 @@ void imaging :: bitsallocated(){
 
 
 /***********************DERIVED CLASS#1: MRI IMAGING*************************/
+
 void MRI :: scaningsequence(){
 	int x;
 
 	x = rand() % 4;
-
+	cout << "Scanning Sequence:\t";
 	switch (x){
 		case 0:
 			scanseq = "SE";
@@ -119,7 +106,7 @@ void MRI :: sequencevarient(){
 	int y;
 
 	y = rand() % 6;
-
+	cout << "Sequence Varient:\t";
 		switch (y){
 			case 0:
 				seqvar = "SK";
@@ -160,7 +147,7 @@ void MRI :: scanoptions(){
 	int z;
 
 	z = rand() % 8;
-
+	cout << "Scan Options:\t";
 		switch (z){
 			case 0:
 				seqvar = "PER";
@@ -205,6 +192,14 @@ void MRI :: scanoptions(){
 
 
 /***********************DERIVED CLASS#2: CT IMAGING*************************/
+
+CT :: CT (){
+	DSP = 0;
+	DSD = 0;
+	bitsto = 0;
+	hibit = 0;
+}
+
 void CT :: bitsstored(){
 	bitsto = rand() % bitsalloc;
 	cout << "Bits Stored: " << bitsto << endl;
@@ -228,6 +223,14 @@ void CT :: DistanceSourceDetector(){
 
 
 /***********************DERIVED CLASS#3: ULRTASOUND IMAGING*************************/
+
+US :: US (){
+	LIC = 0;
+	UCDP = 0;
+	bitsto = 0;
+	hibit = 0;
+}
+
 void US :: bitsstored(){
 	bitsto = rand() % bitsalloc;
 	cout << "Bits Stored: " << bitsto << endl;
@@ -240,7 +243,7 @@ void US :: highbit(){
 
 void US :: LossyImageCompression(){
 	LIC = rand() % 1;
-
+	cout << "Lossy Image Compression:\t";
 	switch (LIC){
 		case 0:
 			cout << "0" << LIC << ":Image has NOT been subjected to lossy compression." << endl;
@@ -253,7 +256,7 @@ void US :: LossyImageCompression(){
 
 void US :: UltrasoundColorDataPresent (){
 	UCDP = rand() % 1;
-
+	cout << "Ultrasound Color Data Present:\t";
 		switch (UCDP){
 			case 0:
 				cout << "0" << UCDP << ":Ultrasound color data not present in image." << endl;
