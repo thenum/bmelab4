@@ -1,0 +1,4 @@
+Bits Allocated: 383
+Scanning Sequence: GR
+Scan Options: 
+Annotations:helppp

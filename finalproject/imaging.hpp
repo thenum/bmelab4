@@ -8,18 +8,20 @@
 #ifndef IMAGING_HPP_
 #define IMAGING_HPP_
 
+
 #include <iostream>
 
 using namespace std;
 
 class imaging{
+
 	protected:
 		//imaging *comment;
-		int bitsalloc; //i;
+		int bitsalloc;
+		string comment, occupation;
 
 	public:
 		imaging();
-		void display();
 		void annotation();
 		void bitsallocated();
 };
@@ -34,6 +36,7 @@ class MRI : public imaging {
 		void scaningsequence();
 		void sequencevarient();
 		void scanoptions();
+		void displaym();
 };
 
 class CT: public imaging {
@@ -49,6 +52,7 @@ class CT: public imaging {
 		void highbit();
 		void DistanceSourcePatient();
 		void DistanceSourceDetector();
+		void displayc();
 };
 
 class US : public imaging {
@@ -64,6 +68,7 @@ class US : public imaging {
 		void highbit();
 		void LossyImageCompression();
 		void UltrasoundColorDataPresent ();
+		void displayu();
 };
 
 

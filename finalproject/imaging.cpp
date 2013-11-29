@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
 #include "imaging.hpp"
 
 using namespace std;
@@ -14,6 +15,7 @@ using namespace std;
 /***********************BASE CLASS*************************/
 imaging :: imaging (){
 	bitsalloc = 0;
+
 	//i = 0;
 	//int max = 1000;
 
@@ -21,46 +23,61 @@ imaging :: imaging (){
 
 }
 
-void imaging :: display() {
-
-}
 
 void imaging :: annotation() {
-	string dname, nname, sname, l, occupation;
-	cout << "****MENU: ANNOTATIONS****" << endl;
-	cout << "Occupation\t\tInput" << endl;
-	cout << "------------------------------"<< endl;
-	cout << "Doctor\t\tD" << endl;
-	cout << "Nurse\t\tN" << endl;
-	cout << "Specialist\t\tS"<<endl;
-	cout << "------------------------------"<< endl;
-	cout << "According to the above chart, please specify which is applicable to you:" << endl;
-	cin >> l;
-		/*if ((l != "D"  )||(l != "N")||(l != "S")){
-			cout << "Sorry your input is not correct. Please specify according to the chart which is applicable to you:" << endl;
-			cin >> l;
-		}*/
+    string doctor_name,nurse_name,sp_name,oth_name,ch;
+    cout << "Please enter which specification applies to you according to the chart" <<endl;
+    cout << "Occupation\t\tInput" << endl;
+    cout << "Doctor\t\t\t(D)" << endl;
+    cout << "Specialist\t\t(S)" << endl;
+    cout << "Nurse\t\t\t(N)" << endl;
+    cout << "Other\t\t\t(O)" << endl;
+    cout<<"Enter the post as (D/S/N/O).....";
+    cin >> ch;
 
-			if (l == "D"){
-				occupation = "Doctor";
-				cout << "Please enter your name:";
-				cin >> dname;
-			}
+    while (!((ch == "D" )|(ch == "S")|(ch== "N")|(ch=="O"))){
+        cout << "Sorry your input is not correct. Please specify according to the chart which is applicable to you:" << endl;
+        cin >>ch;
+    }
 
-			else if ( l == "N"){
+    if (ch== "D"){
+            occupation = "Doctor";
+            cout<<"Occupation : "<<occupation<<endl;
+        cout << "Please enter your name:";
+        cin >> doctor_name;
+        cout << "Comment:";
+        cin >> comment;
+     }
 
-				occupation = "Nurse";
-				cout << "Please enter your name:";
-				cin >> nname;
-			}
-			else (l == "S");{
-				occupation = "Specialist";
-				cout << "Please enter your name:";
-				cin >> sname;
+     else if (ch == "S"){
+             occupation = "Specialist";
+             cout<<"Occupation : "<<occupation<<endl;
+         cout << "Please enter your name:";
+         cin >> sp_name;
+         cout << "Comment:";
+         cin >> comment;
 
-		}
-	cout << "Comment:";
-	// comment array code
+     }
+     else if(ch == "N"){
+         occupation = "Nurse";
+         cout<<"Occupation : "<<occupation<<endl;
+         cout << "Please enter your name:";
+         cin >> nurse_name;
+         cout << "Comment:";
+         cin >> comment;
+
+     }
+     else if(ch=="O"){
+             cout<<"Occupation : Others"<<endl;
+             cout << "Please specify the post: ";
+             cin >> occupation;
+
+             cout << "Please enter your name: ";
+             cin >> oth_name;
+             cout << "Comment:";
+             cin >> comment;
+
+     }
 }
 
 void imaging :: bitsallocated(){
@@ -188,6 +205,15 @@ void MRI :: scanoptions(){
 		}
 }
 
+void MRI :: displaym(){
+	ofstream outfile; // producing an outfile
+	outfile.open ("report.txt",ios::out);
+			outfile << "Bits Allocated: " << bitsalloc << endl;
+			outfile << "Scanning Sequence: " << scanseq << endl;
+			outfile << "Scan Options: " << scanopt << endl;
+			outfile << "Annotations:" << comment << endl;
+
+}
 
 
 
@@ -221,7 +247,17 @@ void CT :: DistanceSourceDetector(){
 }
 
 
+void CT :: displayc(){
+	ofstream outfile; // producing an outfile
+	outfile.open ("report.txt",ios::out);
+			outfile << "Bits Allocated: " << bitsalloc << endl;
+			outfile << "Bits Stored: " << bitsto << endl;
+			outfile << "High Bit: " << hibit << endl;
+			outfile << "Distance Source to Patient: " << DSP << "mm" << endl;
+			outfile << "Distance Source to Detector: " << DSD <<  "mm" << endl;
+			outfile << "Annotations:" << comment << endl;
 
+}
 /***********************DERIVED CLASS#3: ULRTASOUND IMAGING*************************/
 
 US :: US (){
@@ -266,4 +302,16 @@ void US :: UltrasoundColorDataPresent (){
 				break;
 		}
 	}
+void US :: displayu(){
+	ofstream outfile; // producing an outfile
+	outfile.open ("report.txt",ios::out);
+			outfile << "Bits Allocated: " << bitsalloc << endl;
+			outfile << "Bits Stored: " << bitsto << endl;
+			outfile << "High Bit: " << hibit << endl;
+			outfile << "Ultrasound Color Data Present: 0" << UCDP;
+			outfile << "Lossy Image Compression: 0" << LIC;
+			outfile << "Annotations:" << comment << endl;
+
+}
+
 
